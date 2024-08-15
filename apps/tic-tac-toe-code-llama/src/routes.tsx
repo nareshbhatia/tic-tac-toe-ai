@@ -1,4 +1,4 @@
-import { HomePage } from './routes/home';
+import { TicTacToe } from './routes/tic-tac-toe';
 import { RootLayout } from './routes/root';
 import type { RouteObject } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <HomePage />,
+        element: <TicTacToe />,
       },
     ],
   },
