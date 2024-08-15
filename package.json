@@ -1,6 +1,6 @@
 {
   "name": "tic-tac-toe-ai",
-  "description": "Tic Tac Toe Ai",
+  "description": "Tic-Tac-Toe implementations using various AI assistants",
   "version": "0.0.1",
   "private": true,
   "repository": {
@@ -46,18 +46,19 @@
   "dependencies": {
     "@code-shaper/commitlint-config": "^1.*",
     "@code-shaper/eslint-config": "^1.*",
-    "@commitlint/cz-commitlint": "^19.2.0",
+    "@code-shaper/vite": "^1.*",
+    "@commitlint/cz-commitlint": "^19.4.0",
     "@manypkg/cli": "^0.21.4",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "code-shaper": "^1.*",
     "commitizen": "^4.3.0",
-    "commitlint": "^19.2.2",
+    "commitlint": "^19.4.0",
     "eslint": "^8.57.0",
     "husky": "^8.0.3",
-    "lint-staged": "^15.2.2",
+    "lint-staged": "^15.2.9",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.5",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
     "turbo": "^1.*"
   },
   "engines": {

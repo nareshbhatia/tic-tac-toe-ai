@@ -1,8 +1,6 @@
-# Tic Tac Toe Ai
+# Tic-Tac-Toe using AI Assistants
 
-** Add a short description of Tic Tac Toe Ai here. **
-
-This repository was bootstrapped with [Code Shaper](https://code-shaper.dev).
+This repository implements Tic-Tac-Toe using various AI assistants.
 
 ## Prerequisites for development
 
@@ -23,8 +21,7 @@ npm run storybook
 
 Open browser windows at the following URLs to see the respective apps:
 
-1. http://localhost:3000/: Tic Tac Toe Ai
-2. http://localhost:6006/: Storybook
+1. http://localhost:3000/: Tic-Tac-Toe using Code Llama
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
