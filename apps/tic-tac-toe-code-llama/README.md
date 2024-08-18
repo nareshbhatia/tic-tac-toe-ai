@@ -1,5 +1,7 @@
 # Tic-Tac-Toe using Code Llama
 
+![screenshot](assets/tic-tac-toe-code-llama.png)
+
 I used the Code Llama 70 billion parameter model for generating this
 application.
 

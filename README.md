@@ -14,14 +14,13 @@ nvm use        # use the required version of node
 npm ci         # install dependencies
 npm run build  # build all packages
 npm run dev    # run apps
-
-# in a separate shell
-npm run storybook
 ```
 
 Open browser windows at the following URLs to see the respective apps:
 
-1. http://localhost:3000/: Tic-Tac-Toe using Code Llama
+1. http://localhost:3000/:
+   [Tic-Tac-Toe using Code Llama](apps/tic-tac-toe-code-llama/)
+2. http://localhost:3001/: [Tic-Tac-Toe using Claude](apps/tic-tac-toe-claude/)
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
