@@ -29,3 +29,30 @@ computer immediately makes its move if it’s the computer’s turn.
 
 2. handleClick Logic: The handleClick function only sets the human player's move
    (X) and then triggers the computer's turn by setting isXNext to false.
+
+### Prompt 3
+
+In spite of using the minimax function, the computer moves are very dumb and the
+human is able to win very easily. Is there a bug in the program?
+
+**Response:** It looks like the Minimax function might not be evaluating all
+possible scenarios correctly, leading to suboptimal moves. Let me review and
+correct the logic to ensure that the Minimax algorithm works as expected.
+
+**Corrected Minimax Implementation**
+
+The issue likely lies in how the available spots and the recursion are handled.
+Here's a corrected version of the Minimax function and how it integrates with
+the rest of the code:
+
+**Key Changes and Explanations**
+
+1. Minimax Scoring Adjustments: The Minimax function now returns a score based
+   on the depth of the move. The idea is to prefer quicker wins and longer
+   losses for the computer. The depth parameter is introduced to add/subtract
+   from the score to ensure this. `10 - depth` for a win by "O" (computer) and
+   `-10 + depth` for a win by "X" (human).
+
+2. Best Move Selection: The bestMove function iterates through all possible
+   moves, evaluates them using Minimax, and selects the move with the highest
+   score for the computer.

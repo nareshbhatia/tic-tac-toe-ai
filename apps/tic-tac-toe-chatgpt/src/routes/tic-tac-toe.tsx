@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
 
-interface Move {
-  index: number;
-  score: number;
-}
-
 type Square = string | null;
 
 export function TicTacToe() {
@@ -37,54 +32,57 @@ export function TicTacToe() {
     return null;
   };
 
-  // @ts-ignore
-  const minimax = (newBoard: Square[], player) => {
-    const availSpots = newBoard.filter((s) => s === null);
-
+  const minimax = (
+    newBoard: Square[],
+    depth: number,
+    isMaximizing: boolean,
+  ) => {
     const winner = calculateWinner(newBoard);
-    if (winner === 'X') return { score: -10 };
-    if (winner === 'O') return { score: 10 };
-    if (availSpots.length === 0) return { score: 0 };
+    if (winner === 'X') return -10 + depth;
+    if (winner === 'O') return 10 - depth;
+    if (!newBoard.includes(null)) return 0;
 
-    const moves: Move[] = [];
-    for (let i = 0; i < availSpots.length; i++) {
-      const move = { index: 0, score: 0 };
-      move.index = newBoard.indexOf(availSpots[i]);
-      newBoard[move.index] = player;
-
-      if (player === 'O') {
-        const result = minimax(newBoard, 'X');
-        move.score = result.score;
-      } else {
-        const result = minimax(newBoard, 'O');
-        move.score = result.score;
-      }
-
-      newBoard[move.index] = null;
-      moves.push(move);
-    }
-
-    let bestMove;
-    if (player === 'O') {
-      let bestScore = -10000;
-      for (let i = 0; i < moves.length; i++) {
-        if (moves[i].score > bestScore) {
-          bestScore = moves[i].score;
-          bestMove = i;
+    if (isMaximizing) {
+      let bestScore = -Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (newBoard[i] === null) {
+          newBoard[i] = 'O';
+          const score = minimax(newBoard, depth + 1, false);
+          newBoard[i] = null;
+          bestScore = Math.max(score, bestScore);
         }
       }
+      return bestScore;
     } else {
-      let bestScore = 10000;
-      for (let i = 0; i < moves.length; i++) {
-        if (moves[i].score < bestScore) {
-          bestScore = moves[i].score;
-          bestMove = i;
+      let bestScore = Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (newBoard[i] === null) {
+          newBoard[i] = 'X';
+          const score = minimax(newBoard, depth + 1, true);
+          newBoard[i] = null;
+          bestScore = Math.min(score, bestScore);
+        }
+      }
+      return bestScore;
+    }
+  };
+
+  const bestMove = () => {
+    let bestScore = -Infinity;
+    let move;
+    for (let i = 0; i < 9; i++) {
+      if (board[i] === null) {
+        const newBoard = board.slice();
+        newBoard[i] = 'O';
+        const score = minimax(newBoard, 0, false);
+        newBoard[i] = null;
+        if (score > bestScore) {
+          bestScore = score;
+          move = i;
         }
       }
     }
-
-    // @ts-ignore
-    return moves[bestMove];
+    return move;
   };
 
   // @ts-ignore
@@ -98,10 +96,11 @@ export function TicTacToe() {
   };
 
   useEffect(() => {
-    if (!isXNext) {
+    if (!isXNext && !calculateWinner(board) && board.includes(null)) {
+      const move = bestMove();
       const newBoard = board.slice();
-      const bestMove = minimax(newBoard, 'O').index;
-      newBoard[bestMove] = 'O';
+      // @ts-ignore
+      newBoard[move] = 'O';
       setBoard(newBoard);
       setIsXNext(true);
     }
