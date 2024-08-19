@@ -1,19 +1,10 @@
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
 import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 
 export function TicTacToe() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [winner, setWinner] = useState<string | null>(null);
-  const [showDialog, setShowDialog] = useState(false);
 
   // @ts-ignore
   const checkWinner = (squares) => {
@@ -27,6 +18,7 @@ export function TicTacToe() {
       [0, 4, 8],
       [2, 4, 6],
     ];
+
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (
@@ -43,6 +35,7 @@ export function TicTacToe() {
   // @ts-ignore
   const handleClick = (index) => {
     if (board[index] || winner || !isPlayerTurn) return;
+
     const newBoard = [...board];
     newBoard[index] = 'X';
     setBoard(newBoard);
@@ -54,11 +47,11 @@ export function TicTacToe() {
     const winner = checkWinner(board);
     if (winner === 'O') return 10 - depth;
     if (winner === 'X') return depth - 10;
-    if (!board.includes(null)) return 0;
+    if (board.every((square: string | null) => square !== null)) return 0;
 
     if (isMaximizing) {
       let bestScore = -Infinity;
-      for (let i = 0; i < board.length; i++) {
+      for (let i = 0; i < 9; i++) {
         if (board[i] === null) {
           board[i] = 'O';
           const score = minimax(board, depth + 1, false);
@@ -67,55 +60,50 @@ export function TicTacToe() {
         }
       }
       return bestScore;
-    }
-    let bestScore = Infinity;
-    for (let i = 0; i < board.length; i++) {
-      if (board[i] === null) {
-        board[i] = 'X';
-        const score = minimax(board, depth + 1, true);
-        board[i] = null;
-        bestScore = Math.min(score, bestScore);
+    } else {
+      let bestScore = Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (board[i] === null) {
+          board[i] = 'X';
+          const score = minimax(board, depth + 1, true);
+          board[i] = null;
+          bestScore = Math.min(score, bestScore);
+        }
       }
+      return bestScore;
     }
-    return bestScore;
   };
 
   const computerMove = () => {
     let bestScore = -Infinity;
-    let move;
-    for (let i = 0; i < board.length; i++) {
-      if (board[i] === null) {
-        board[i] = 'O';
-        const score = minimax(board, 0, false);
-        board[i] = null;
+    let bestMove;
+    const newBoard = [...board];
+
+    for (let i = 0; i < 9; i++) {
+      if (newBoard[i] === null) {
+        newBoard[i] = 'O';
+        const score = minimax(newBoard, 0, false);
+        newBoard[i] = null;
         if (score > bestScore) {
           bestScore = score;
-          move = i;
+          bestMove = i;
         }
       }
     }
-    const newBoard = [...board];
+
     // @ts-ignore
-    newBoard[move] = 'O';
+    newBoard[bestMove] = 'O';
     setBoard(newBoard);
     setIsPlayerTurn(true);
   };
 
   useEffect(() => {
-    const currentWinner = checkWinner(board);
-    if (currentWinner) {
-      setWinner(currentWinner);
-      setShowDialog(true);
-    } else if (!board.includes(null)) {
-      setWinner('Draw');
-      setShowDialog(true);
-    } else if (!isPlayerTurn) {
-      const timer = setTimeout(() => {
-        computerMove();
-      }, 500);
-      return () => {
-        clearTimeout(timer);
-      };
+    const newWinner = checkWinner(board);
+    if (newWinner) {
+      setWinner(newWinner);
+    } else if (!isPlayerTurn && !winner) {
+      const timer = setTimeout(computerMove, 500);
+      return () => clearTimeout(timer);
     }
   }, [board, isPlayerTurn]);
 
@@ -123,53 +111,40 @@ export function TicTacToe() {
     setBoard(Array(9).fill(null));
     setIsPlayerTurn(true);
     setWinner(null);
-    setShowDialog(false);
   };
 
   // @ts-ignore
   const renderSquare = (index) => (
-    <button
-      className="size-20 border border-gray-300 bg-white text-4xl font-bold"
-      onClick={() => {
-        handleClick(index);
-      }}
+    <Button
+      className="w-20 h-20 text-4xl font-bold"
+      onClick={() => handleClick(index)}
     >
       {board[index]}
-    </button>
+    </Button>
   );
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
-      <h1 className="mb-8 text-4xl font-bold">Tic-Tac-Toe</h1>
-      <div className="mb-4 grid grid-cols-3 gap-2">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold mb-8">Tic-Tac-Toe</h1>
+      <div className="grid grid-cols-3 gap-2 mb-4">
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((index) => renderSquare(index))}
       </div>
-      <p className="mb-4 text-xl">
-        {winner
-          ? `Winner: ${winner}`
-          : `Current player: ${isPlayerTurn ? 'X (You)' : 'O (Computer)'}`}
-      </p>
-      <button
-        className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-        onClick={resetGame}
-      >
+      {winner ? (
+        <div className="text-2xl font-bold mb-4">
+          {winner === 'X' ? 'You win!' : 'AI wins!'}
+        </div>
+      ) : board.every((square) => square !== null) ? (
+        <div className="text-2xl font-bold mb-4">It's a draw!</div>
+      ) : (
+        <div className="text-2xl font-bold mb-4">
+          {isPlayerTurn ? 'Your turn' : 'AI thinking...'}
+        </div>
+      )}
+      <Button onClick={resetGame} className="mt-4">
         Reset Game
-      </button>
-      <AlertDialog onOpenChange={setShowDialog} open={showDialog}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Game Over</AlertDialogTitle>
-            <AlertDialogDescription>
-              {winner === 'Draw' ? "It's a draw!" : `Player ${winner} wins!`}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction onClick={resetGame}>
-              Play Again
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      </Button>
     </div>
   );
 }
+
+export default TicTacToe;

@@ -1,14 +1,21 @@
 # Tic Tac Toe Claude
 
-![screenshot](assets/tic-tac-toe-claude.png)
+![screenshot-v1](assets/tic-tac-toe-claude-v1.png)
 
 The above screenshot is from a fully working app in Claude's environment. This
 feature is called a Claude artifact.
 
+I tried the same prompts a second time to see if Claude would generate the same
+code. While not exact, it was very similar. In fact, I like the look of this new
+version 2. Also it got rid of the alert dialog at the end of the game, which
+means that I can see the end state of the board very clearly.
+
+![screenshot-v2](assets/tic-tac-toe-claude-v2.png)
+
 ### Prompt
 
-1. Create a Tic-Tac-Toe game for me in React. It should allow the user to play
-   against the computer.
+1. Create a Tic-Tac-Toe game in React. It should allow the user to play against
+   the computer.
 2. The computer's algorithm for making the next move seems to be extremely dumb.
    Can you make that algorithm extremely smart so that it gives a tough
    competition to the user?
