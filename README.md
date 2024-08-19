@@ -2,6 +2,11 @@
 
 This repository implements Tic-Tac-Toe using various AI assistants.
 
+Please follow the links below for details of each implementation:
+
+1. [Tic-Tac-Toe using Code Llama](apps/tic-tac-toe-code-llama/)
+2. [Tic-Tac-Toe using Claude](apps/tic-tac-toe-claude/)
+
 ## Prerequisites for development
 
 1. [Node Version Manager](https://github.com/nvm-sh/nvm) (nvm) - allows using
@@ -18,9 +23,8 @@ npm run dev    # run apps
 
 Open browser windows at the following URLs to see the respective apps:
 
-1. http://localhost:3000/:
-   [Tic-Tac-Toe using Code Llama](apps/tic-tac-toe-code-llama/)
-2. http://localhost:3001/: [Tic-Tac-Toe using Claude](apps/tic-tac-toe-claude/)
+1. http://localhost:3000/: Tic-Tac-Toe using Code Llama
+2. http://localhost:3001/: Tic-Tac-Toe using Claude
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
