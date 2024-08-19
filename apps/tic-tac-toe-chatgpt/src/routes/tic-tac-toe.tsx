@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Move {
   index: number;
@@ -95,14 +95,17 @@ export function TicTacToe() {
     newBoard[index] = isXNext ? 'X' : 'O';
     setBoard(newBoard);
     setIsXNext(!isXNext);
+  };
 
+  useEffect(() => {
     if (!isXNext) {
+      const newBoard = board.slice();
       const bestMove = minimax(newBoard, 'O').index;
       newBoard[bestMove] = 'O';
       setBoard(newBoard);
       setIsXNext(true);
     }
-  };
+  }, [isXNext, board]);
 
   // @ts-ignore
   const renderSquare = (index) => (
