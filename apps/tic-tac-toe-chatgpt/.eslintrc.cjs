@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
-    '@code-shaper/eslint-config/strict-react',
+    '@code-shaper/eslint-config',
     'plugin:@dword-design/import-alias/recommended',
     'plugin:storybook/recommended',
   ],
