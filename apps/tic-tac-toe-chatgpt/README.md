@@ -2,6 +2,8 @@
 
 ![screenshot](assets/tic-tac-toe-chatgpt.png)
 
+It took 4 prompts to get the logic right!
+
 ### Prompt 1
 
 You are an expert web developer that writes simple, concise code and
@@ -56,3 +58,31 @@ the rest of the code:
 2. Best Move Selection: The bestMove function iterates through all possible
    moves, evaluates them using Minimax, and selects the move with the highest
    score for the computer.
+
+### Prompt 4
+
+The game state of "Draw" is not being detected. Instead computer just prompts
+for the next player. When there is a draw, computer should announce it and let
+the human reset the game.
+
+**Response:** To correctly detect a draw in the Tic-Tac-Toe game, we need to
+check if the board is full and there is no winner. If both conditions are true,
+we should announce a draw. I'll update the code to include this functionality.
+
+**Key Updates**
+
+1. Status State: Added a status state to track the game's current status (e.g.,
+   next player, winner, or draw).
+
+2. Draw Condition: In the useEffect, we check if the board is full
+   (!board.includes(null)) and if there is no winner. If both are true, we set
+   the status to "Draw."
+
+3. Reset Game: The "Restart" button now resets the status state as well as the
+   board and turn indicator.
+
+**Flow**
+
+1. After each move, the useEffect checks if there is a winner.
+2. If no winner and the board is full, it announces a draw.
+3. If neither, the game continues with the next player.

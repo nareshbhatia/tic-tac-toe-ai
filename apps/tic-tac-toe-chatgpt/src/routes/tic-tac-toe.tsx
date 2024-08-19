@@ -5,6 +5,7 @@ type Square = string | null;
 export function TicTacToe() {
   const [board, setBoard] = useState<Square[]>(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [status, setStatus] = useState('Next player: X');
 
   const lines = [
     [0, 1, 2],
@@ -96,13 +97,20 @@ export function TicTacToe() {
   };
 
   useEffect(() => {
-    if (!isXNext && !calculateWinner(board) && board.includes(null)) {
+    const winner = calculateWinner(board);
+    if (winner) {
+      setStatus(`Winner: ${winner}`);
+    } else if (!board.includes(null)) {
+      setStatus('Draw');
+    } else if (!isXNext) {
       const move = bestMove();
       const newBoard = board.slice();
       // @ts-ignore
       newBoard[move] = 'O';
       setBoard(newBoard);
       setIsXNext(true);
+    } else {
+      setStatus(`Next player: ${isXNext ? 'X' : 'O'}`);
     }
   }, [isXNext, board]);
 
@@ -118,21 +126,18 @@ export function TicTacToe() {
     </button>
   );
 
-  const winner = calculateWinner(board);
-  const status = winner
-    ? `Winner: ${winner}`
-    : `Next player: ${isXNext ? 'X' : 'O'}`;
-
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <div className="mb-4 text-3xl">{status}</div>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="text-3xl mb-4">{status}</div>
       <div className="grid grid-cols-3 gap-1">
         {board.map((_, index) => renderSquare(index))}
       </div>
       <button
-        className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
         onClick={() => {
           setBoard(Array(9).fill(null));
+          setIsXNext(true);
+          setStatus('Next player: X');
         }}
       >
         Restart
