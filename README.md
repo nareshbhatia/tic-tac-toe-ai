@@ -1,12 +1,23 @@
 # Tic-Tac-Toe using AI Assistants
 
-This repository implements Tic-Tac-Toe using various AI assistants.
+This repository implements Tic-Tac-Toe using various AI assistants. The goal of
+this experiment was twofold:
+
+1. To generate the game with the minimum number of prompts, given that
+   Tic-Tac-Toe is a well-known game.
+2. To create a version of the game that is very challenging to beat, requiring a
+   smart algorithm to compute the computer's next move.
+
+Additional prompts were acceptable to achieve the second goal, but the AI would
+receive lower marks if human intervention was necessary. The ideal outcome was
+an AI-generated game that was both efficiently created and highly competitive.
 
 Please follow the links below for details of each implementation:
 
 1. [Tic-Tac-Toe using Code Llama](apps/tic-tac-toe-code-llama/)
 2. [Tic-Tac-Toe using Claude](apps/tic-tac-toe-claude/)
 3. [Tic-Tac-Toe using ChatGPT](apps/tic-tac-toe-chatgpt/)
+4. [Tic-Tac-Toe using v0](apps/tic-tac-toe-v0/)
 
 ## Prerequisites for development
 
@@ -27,6 +38,7 @@ Open browser windows at the following URLs to see the respective apps:
 1. http://localhost:3000/: Tic-Tac-Toe using Code Llama
 2. http://localhost:3001/: Tic-Tac-Toe using Claude
 3. http://localhost:3002/: Tic-Tac-Toe using ChatGPT
+4. http://localhost:3003/: Tic-Tac-Toe using v0
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
