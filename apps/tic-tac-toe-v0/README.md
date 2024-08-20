@@ -2,7 +2,7 @@
 
 ![screenshot](assets/tic-tac-toe-v0.png)
 
-It took x prompts to get the logic right!
+It took 9 prompts to get the logic right!
 
 ### Prompt 1
 

@@ -18,6 +18,7 @@ Please follow the links below for details of each implementation:
 2. [Tic-Tac-Toe using Claude](apps/tic-tac-toe-claude/)
 3. [Tic-Tac-Toe using ChatGPT](apps/tic-tac-toe-chatgpt/)
 4. [Tic-Tac-Toe using v0](apps/tic-tac-toe-v0/)
+5. [Tic-Tac-Toe using Devin](apps/tic-tac-toe-devin/)
 
 ## Prerequisites for development
 
@@ -39,6 +40,7 @@ Open browser windows at the following URLs to see the respective apps:
 2. http://localhost:3001/: Tic-Tac-Toe using Claude
 3. http://localhost:3002/: Tic-Tac-Toe using ChatGPT
 4. http://localhost:3003/: Tic-Tac-Toe using v0
+5. http://localhost:3004/: Tic-Tac-Toe using Devin
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
