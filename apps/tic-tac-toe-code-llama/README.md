@@ -9,6 +9,16 @@ application.
 ollama run codellama:70b-instruct
 ```
 
+## Observations
+
+1. Code Llama was getting very confused if I gave it longer prompts with
+   multiple instructions. I had to break up the prompts into smaller chunks to
+   make it work.
+2. After initial listing of the game in the `<App>` component, it was never able
+   to give me the full listing again. It always instructed me to change smaller
+   pieces of the file. This is fine, but there was no way to validate if my
+   version of the file matched its version.
+
 ### Prompt
 
 You are an expert web developer that writes simple, concise code and

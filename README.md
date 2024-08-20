@@ -20,6 +20,16 @@ Please follow the links below for details of each implementation:
 4. [Tic-Tac-Toe using v0](apps/tic-tac-toe-v0/)
 5. [Tic-Tac-Toe using Devin](apps/tic-tac-toe-devin/)
 
+## Ranking
+
+| Rank | Tool       | Prompts | Comments                                                           |
+| :--: | ---------- | :-----: | ------------------------------------------------------------------ |
+|  1   | Claude     |    2    | Iterate in Claude's artifact                                       |
+|  2   | Devin      |    2    | Iterate in Devin's environment (slower than Claude)                |
+|  3   | v0         |    8    | Iterate in v0's environment, took 4 prompts to get the logic right |
+|  4   | ChatGPT    |    4    | Slow iterations, took 3 prompts to get the logic right             |
+|  5   | Code Llama |    x    | Very buggy code, workflow is not smooth                            |
+
 ## Prerequisites for development
 
 1. [Node Version Manager](https://github.com/nvm-sh/nvm) (nvm) - allows using
