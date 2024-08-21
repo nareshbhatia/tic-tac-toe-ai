@@ -19,6 +19,7 @@ Please follow the links below for details of each implementation:
 3. [Tic-Tac-Toe using ChatGPT](apps/tic-tac-toe-chatgpt/)
 4. [Tic-Tac-Toe using v0](apps/tic-tac-toe-v0/)
 5. [Tic-Tac-Toe using Devin](apps/tic-tac-toe-devin/)
+6. [Tic-Tac-Toe using Cursor](apps/tic-tac-toe-cursor/)
 
 ## Ranking
 
@@ -29,6 +30,7 @@ Please follow the links below for details of each implementation:
 |  3   | v0         |    8    | Iterate in v0's environment, took 4 prompts to get the logic right |
 |  4   | ChatGPT    |    4    | Slow iterations, took 3 prompts to get the logic right             |
 |  5   | Code Llama |    x    | Very buggy code, workflow is not smooth                            |
+|      | Cursor     |    x    |                                                                    |
 
 ## Prerequisites for development
 
@@ -51,6 +53,7 @@ Open browser windows at the following URLs to see the respective apps:
 3. http://localhost:3002/: Tic-Tac-Toe using ChatGPT
 4. http://localhost:3003/: Tic-Tac-Toe using v0
 5. http://localhost:3004/: Tic-Tac-Toe using Devin
+6. http://localhost:3005/: Tic-Tac-Toe using Cursor
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
