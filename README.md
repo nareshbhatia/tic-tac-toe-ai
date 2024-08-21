@@ -23,14 +23,14 @@ Please follow the links below for details of each implementation:
 
 ## Ranking
 
-| Rank | Tool       | Prompts | Comments                                                           |
-| :--: | ---------- | :-----: | ------------------------------------------------------------------ |
-|  1   | Claude     |    2    | Iterate in Claude's artifact                                       |
-|  2   | Devin      |    2    | Iterate in Devin's environment (slower than Claude)                |
-|  3   | v0         |    8    | Iterate in v0's environment, took 4 prompts to get the logic right |
-|  4   | ChatGPT    |    4    | Slow iterations, took 3 prompts to get the logic right             |
-|  5   | Code Llama |    x    | Very buggy code, workflow is not smooth                            |
-|      | Cursor     |    x    |                                                                    |
+| Rank | Tool       | Prompts | Comments                                                                    |
+| :--: | ---------- | :-----: | --------------------------------------------------------------------------- |
+|  1   | Cursor     |    3    | Fastest iterations directly in VS Code, type-safety with additional prompts |
+|  2   | Claude     |    2    | Iterate in Claude's artifact, then transfer code to VS Code                 |
+|  3   | Devin      |    2    | Iterate in Devin's environment (slower than Claude)                         |
+|  4   | v0         |    8    | Iterate in v0's environment, took 4 prompts to get the logic right          |
+|  5   | ChatGPT    |    4    | Slow iterations, took 3 prompts to get the logic right                      |
+|  6   | Code Llama |    x    | Very buggy code, workflow is not smooth                                     |
 
 ## Prerequisites for development
 

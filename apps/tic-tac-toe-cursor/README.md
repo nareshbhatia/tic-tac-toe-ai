@@ -4,7 +4,14 @@
 
 ## Approach 1 – Prioritize working result in minimum number of prompts
 
-1.
+1. Implement a Tic-Tac-Toe game in React. It should allow the user to play
+   against the computer. Use Tailwind CSS for styling the game.
+2. The computer's algorithm for making the next move seems to be extremely dumb.
+   Can you make that algorithm extremely smart so that it gives a tough
+   competition to the user?
+3. Can you fix the board layout so that the column gap does not increase when
+   the window width is increased. Make the column gap the same as the row gap.
+   Also center the whole layout on the window.
 
 ## Approach 2 – Prioritize type safety and clean code
 
