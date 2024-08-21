@@ -1,12 +1,12 @@
 # Tic-Tac-Toe using AI Assistants
 
-This repository implements Tic-Tac-Toe using various AI assistants. The goal of
-this experiment was twofold:
+This repository implements Tic-Tac-Toe using various AI assistants.
 
-1. To generate the game with the minimum number of prompts, given that
-   Tic-Tac-Toe is a well-known game.
-2. To create a version of the game that is very challenging to beat, requiring a
-   smart algorithm to compute the computer's next move.
+## Goals of this experiment
+
+1. Generate the game with a minimum number of prompts (emphasizing speed)
+2. Make the game challenging to beat (emphasizing program logic)
+3. Code should type safe and maintainable (emphasizing quality)
 
 Additional prompts were acceptable to achieve the second goal, but the AI would
 receive lower marks if human intervention was necessary. The ideal outcome was
@@ -23,14 +23,18 @@ Please follow the links below for details of each implementation:
 
 ## Ranking
 
-| Rank | Tool       | Prompts | Comments                                                                    |
-| :--: | ---------- | :-----: | --------------------------------------------------------------------------- |
-|  1   | Cursor     |    3    | Fastest iterations directly in VS Code, type-safety with additional prompts |
-|  2   | Claude     |    2    | Iterate in Claude's artifact, then transfer code to VS Code                 |
-|  3   | Devin      |    2    | Iterate in Devin's environment (slower than Claude)                         |
-|  4   | v0         |    8    | Iterate in v0's environment, took 4 prompts to get the logic right          |
-|  5   | ChatGPT    |    4    | Slow iterations, took 3 prompts to get the logic right                      |
-|  6   | Code Llama |    x    | Very buggy code, workflow is not smooth                                     |
+| Rank | Tool       | Prompts | Unbeatable | Type Safe | Comments                                                                    |
+| :--: | ---------- | :-----: | :--------: | :-------: | --------------------------------------------------------------------------- |
+|  1   | Cursor     |    3    |     Y      |     Y     | Fastest iterations directly in VS Code, type-safety with additional prompts |
+|  2   | Claude     |    2    |     Y      |     N     | Iterate in Claude's artifact, then transfer code to VS Code                 |
+|  3   | Devin      |    2    |     Y      |     N     | Iterate in Devin's environment (slower than Claude)                         |
+|  4   | v0         |    8    |     Y      |     N     | Iterate in v0's environment, took 4 prompts to get the logic right          |
+|  5   | ChatGPT    |    4    |     Y      |     N     | Slow iterations, took 3 prompts to get the logic right                      |
+|  6   | Code Llama |    x    |     N      |     N     | Very buggy code, workflow was not smooth, did not attempt smart logic       |
+
+> The strict ESLint configuration was turned off for all tools, except Cursor,
+> because the iteration cycles were too slow, having to sync code between the
+> tool's environment and VS Code.
 
 ## Prerequisites for development
 
